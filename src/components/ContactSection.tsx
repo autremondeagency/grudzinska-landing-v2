@@ -126,18 +126,12 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Images */}
-              <div className="grid grid-cols-2 gap-3">
-                <img
-                  src={IMAGES.consultation}
-                  alt="Anna Krawczyk-Grudzińska podczas konsultacji z pacjentką w gabinecie"
-                  className="rounded-xl w-full aspect-[4/3] object-cover"
-                  loading="lazy"
-                />
+              {/* Image */}
+              <div className="hidden sm:block">
                 <img
                   src={IMAGES.online}
-                  alt="Anna Krawczyk-Grudzińska podczas konsultacji online"
-                  className="rounded-xl w-full aspect-[4/3] object-cover"
+                  alt="Anna Krawczyk-Grudzińska — dietetyk bariatryczny"
+                  className="rounded-xl w-full aspect-[3/2] object-cover object-top"
                   loading="lazy"
                 />
               </div>

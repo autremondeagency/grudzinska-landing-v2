@@ -5,8 +5,6 @@ export const IMAGES = {
   about: "/images/about.webp",
   consultation: "/images/consultation.webp",
   online: "/images/online.webp",
-  gallery1: "/images/gallery1.webp",
-  gallery2: "/images/gallery2.webp",
 };
 
 export const CONTACT = {

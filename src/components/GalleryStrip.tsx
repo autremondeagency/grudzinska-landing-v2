@@ -3,17 +3,15 @@ import { IMAGES } from "@/content";
 
 export default function GalleryStrip() {
   const images = [
-    { src: IMAGES.gallery1, alt: "Anna Krawczyk-Grudzińska w klinice dietetycznej" },
-    { src: IMAGES.consultation, alt: "Anna podczas konsultacji z pacjentką w gabinecie" },
-    { src: IMAGES.gallery2, alt: "Anna Krawczyk-Grudzińska — dietetyk bariatryczny" },
-    { src: IMAGES.online, alt: "Anna Krawczyk-Grudzińska podczas konsultacji" },
+    { src: IMAGES.about, alt: "Anna Krawczyk-Grudzińska — dietetyk bariatryczny" },
+    { src: IMAGES.consultation, alt: "Anna Krawczyk-Grudzińska w klinice" },
   ];
 
   return (
     <section className="py-16 bg-cream overflow-hidden">
       <AnimatedSection variant="fadeIn">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8">
+          <div className="grid grid-cols-2 gap-4 lg:gap-6">
             {images.map((img, i) => (
               <div
                 key={i}
