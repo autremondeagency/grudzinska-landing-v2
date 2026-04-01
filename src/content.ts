@@ -1,15 +1,12 @@
 // All Polish copy, image URLs, and contact info in one place
 
 export const IMAGES = {
-  hero: "/images/hero.png",
-  about: "/images/about.png",
-  consultation: "/images/consultation.png",
-  online: "/images/online.png",
-  market: "/images/market.png",
-  cafe: "/images/cafe.png",
-  konsultacjaGabinetowa: "/images/konsultacja-gabinetowa.webp",
-  przygotowaniePosilku: "/images/przygotowanie-posilku.webp",
-  konsultacjaOnline: "/images/konsultacja-online.webp",
+  hero: "/images/hero.webp",
+  about: "/images/about.webp",
+  consultation: "/images/consultation.webp",
+  online: "/images/online.webp",
+  gallery1: "/images/gallery1.webp",
+  gallery2: "/images/gallery2.webp",
 };
 
 export const CONTACT = {

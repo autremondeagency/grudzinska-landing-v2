@@ -129,13 +129,13 @@ export default function ContactSection() {
               {/* Images */}
               <div className="grid grid-cols-2 gap-3">
                 <img
-                  src={IMAGES.konsultacjaGabinetowa}
+                  src={IMAGES.consultation}
                   alt="Anna Krawczyk-Grudzińska podczas konsultacji z pacjentką w gabinecie"
                   className="rounded-xl w-full aspect-[4/3] object-cover"
                   loading="lazy"
                 />
                 <img
-                  src={IMAGES.konsultacjaOnline}
+                  src={IMAGES.online}
                   alt="Anna Krawczyk-Grudzińska podczas konsultacji online"
                   className="rounded-xl w-full aspect-[4/3] object-cover"
                   loading="lazy"

@@ -3,10 +3,10 @@ import { IMAGES } from "@/content";
 
 export default function GalleryStrip() {
   const images = [
-    { src: IMAGES.market, alt: "Anna na targu wybiera świeże warzywa i owoce" },
-    { src: IMAGES.konsultacjaGabinetowa, alt: "Anna podczas konsultacji z pacjentką w gabinecie" },
-    { src: IMAGES.przygotowaniePosilku, alt: "Przygotowanie zdrowego posiłku — kolorowe warzywa na desce" },
-    { src: IMAGES.konsultacjaOnline, alt: "Anna podczas konsultacji online z domu" },
+    { src: IMAGES.gallery1, alt: "Anna Krawczyk-Grudzińska w klinice dietetycznej" },
+    { src: IMAGES.consultation, alt: "Anna podczas konsultacji z pacjentką w gabinecie" },
+    { src: IMAGES.gallery2, alt: "Anna Krawczyk-Grudzińska — dietetyk bariatryczny" },
+    { src: IMAGES.online, alt: "Anna Krawczyk-Grudzińska podczas konsultacji" },
   ];
 
   return (
