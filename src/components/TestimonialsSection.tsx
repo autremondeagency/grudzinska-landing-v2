@@ -20,14 +20,19 @@ export default function TestimonialsSection() {
           <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-sage mb-3">
             {TESTIMONIALS.label}
           </span>
-          <h2 className="font-serif text-warm-brown text-3xl sm:text-4xl lg:text-[2.75rem] leading-tight">
+          <h2 className="font-serif text-warm-brown text-3xl sm:text-4xl lg:text-[2.75rem] leading-tight mb-4">
             {TESTIMONIALS.heading}
           </h2>
+          {TESTIMONIALS.subheading && (
+            <p className="text-warm-brown/65 text-lg leading-relaxed">
+              {TESTIMONIALS.subheading}
+            </p>
+          )}
         </AnimatedSection>
 
         {/* Cards */}
-        <div ref={cardsRef} className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {TESTIMONIALS.reviews.map((review: { name: string; stage: string; text: string; metric: string }, i: number) => (
+        <div ref={cardsRef} className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {TESTIMONIALS.reviews.map((review, i) => (
             <motion.div
               key={review.name}
               initial={{ opacity: 0, y: 36 }}
@@ -58,12 +63,15 @@ export default function TestimonialsSection() {
 
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-4 border-t border-warm-brown-light/30">
-                  <div>
-                    <div className="font-semibold text-warm-brown text-sm">
-                      {review.name}
+                  <div className="flex items-center gap-3">
+                    {/* Initial avatar */}
+                    <div className="w-10 h-10 rounded-full bg-sage/15 flex items-center justify-center font-serif text-sage-dark text-sm font-bold">
+                      {review.name.charAt(0)}
                     </div>
-                    <div className="text-warm-brown/50 text-xs mt-0.5">
-                      {review.stage}
+                    <div>
+                      <div className="font-semibold text-warm-brown text-sm">
+                        {review.name}, {review.age} lat
+                      </div>
                     </div>
                   </div>
                   {/* Metric badge */}

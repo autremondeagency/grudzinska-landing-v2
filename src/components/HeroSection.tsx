@@ -1,10 +1,19 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 import { HERO, IMAGES, CONTACT } from "@/content";
 
 export default function HeroSection() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-cream"
     >
@@ -88,11 +97,12 @@ export default function HeroSection() {
             <div className="absolute -inset-4 lg:-inset-6 bg-sage/[0.08] rounded-[2rem] lg:rounded-[3rem] -rotate-2 transition-transform duration-500" />
             <div className="absolute -inset-4 lg:-inset-6 bg-terracotta/[0.05] rounded-[2rem] lg:rounded-[3rem] rotate-1 transition-transform duration-500" />
             <div className="relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl shadow-warm-brown/10">
-              <img
+              <motion.img
                 src={IMAGES.hero}
                 alt="Anna Grudzińska przygotowuje zdrowe posiłki w kuchni"
-                className="w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] object-cover"
+                className="w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] object-cover scale-110"
                 loading="eager"
+                style={{ y: imageY }}
               />
               {/* Subtle gradient overlay at bottom */}
               <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-warm-brown/10 to-transparent" />

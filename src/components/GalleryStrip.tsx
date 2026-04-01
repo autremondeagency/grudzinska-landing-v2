@@ -4,9 +4,9 @@ import { IMAGES } from "@/content";
 export default function GalleryStrip() {
   const images = [
     { src: IMAGES.market, alt: "Anna na targu wybiera świeże warzywa i owoce" },
-    { src: IMAGES.consultation, alt: "Anna podczas konsultacji z pacjentką" },
-    { src: IMAGES.cafe, alt: "Anna pracuje nad planami dietetycznymi" },
-    { src: IMAGES.online, alt: "Anna podczas konsultacji online" },
+    { src: IMAGES.konsultacjaGabinetowa, alt: "Anna podczas konsultacji z pacjentką w gabinecie" },
+    { src: IMAGES.przygotowaniePosilku, alt: "Przygotowanie zdrowego posiłku — kolorowe warzywa na desce" },
+    { src: IMAGES.konsultacjaOnline, alt: "Anna podczas konsultacji online z domu" },
   ];
 
   return (

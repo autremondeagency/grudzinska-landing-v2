@@ -17,9 +17,14 @@ export default function FAQSection() {
           <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-sage mb-3">
             {FAQ.label}
           </span>
-          <h2 className="font-serif text-warm-brown text-3xl sm:text-4xl lg:text-[2.75rem] leading-tight">
+          <h2 className="font-serif text-warm-brown text-3xl sm:text-4xl lg:text-[2.75rem] leading-tight mb-4">
             {FAQ.heading}
           </h2>
+          {FAQ.subheading && (
+            <p className="text-warm-brown/65 text-lg leading-relaxed">
+              {FAQ.subheading}
+            </p>
+          )}
         </AnimatedSection>
 
         {/* Accordion */}

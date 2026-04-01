@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { HelpCircle, CalendarCheck, Utensils, HeartPulse } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { FOR_WHOM } from "@/content";
+
+const cardIcons = [HelpCircle, CalendarCheck, Utensils, HeartPulse];
 
 export default function ForWhomSection() {
   const cardsRef = useRef(null);
@@ -61,8 +64,8 @@ export default function ForWhomSection() {
                         : "bg-terracotta/[0.04] border-terracotta/15 hover:shadow-terracotta/10 hover:border-terracotta/30"
                     }`}
                   >
-                    {/* Number dot */}
-                    <div className="relative z-10 mb-5">
+                    {/* Number dot + icon */}
+                    <div className="relative z-10 mb-5 flex items-center gap-3">
                       <div
                         className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white ${
                           isEven ? "bg-sage" : "bg-terracotta"
@@ -70,6 +73,15 @@ export default function ForWhomSection() {
                       >
                         {card.number}
                       </div>
+                      {cardIcons[i] && (() => {
+                        const Icon = cardIcons[i];
+                        return (
+                          <Icon
+                            size={20}
+                            className={`${isEven ? "text-sage/60" : "text-terracotta/60"}`}
+                          />
+                        );
+                      })()}
                     </div>
 
                     <h3

@@ -1,8 +1,13 @@
-import { MapPin, Shield, Heart } from "lucide-react";
+import { Award, HeartPulse, Brain, Video } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { ABOUT, IMAGES } from "@/content";
 
-const badgeIcons = [MapPin, Shield, Heart];
+const badgeIconMap: Record<string, typeof Award> = {
+  award: Award,
+  heartPulse: HeartPulse,
+  brain: Brain,
+  video: Video,
+};
 
 export default function AboutSection() {
   return (
@@ -58,18 +63,28 @@ export default function AboutSection() {
               ))}
             </div>
 
+            {/* Trust badges */}
             <AnimatedSection variant="fadeUp" delay={0.4}>
-              <div className="flex flex-wrap gap-3 mt-8">
-                {ABOUT.badges.map((badge: string, i: number) => {
-                  const Icon = badgeIcons[i];
+              <div className="grid grid-cols-2 gap-3 mt-8">
+                {ABOUT.badges.map((badge) => {
+                  const Icon = badgeIconMap[badge.icon] || Award;
                   return (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cream text-warm-brown/80 text-sm font-medium border border-warm-brown-light/50"
+                    <div
+                      key={badge.title}
+                      className="flex items-start gap-3 p-3 rounded-xl bg-cream border border-warm-brown-light/40"
                     >
-                      <Icon size={15} className="text-sage" />
-                      {badge}
-                    </span>
+                      <div className="flex-shrink-0 w-9 h-9 rounded-full bg-sage/12 flex items-center justify-center">
+                        <Icon size={17} className="text-sage" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-warm-brown leading-snug">
+                          {badge.title}
+                        </div>
+                        <div className="text-xs text-warm-brown/55 mt-0.5 leading-snug">
+                          {badge.subtitle}
+                        </div>
+                      </div>
+                    </div>
                   );
                 })}
               </div>

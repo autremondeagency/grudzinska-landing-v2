@@ -1,6 +1,41 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { STATS } from "@/content";
+
+function useCountUp(end: number, inView: boolean, duration = 1.8) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const startTime = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / (duration * 1000), 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(start + (end - start) * eased));
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }, [inView, end, duration]);
+
+  return value;
+}
+
+function parseStatValue(value: string): { num: number; prefix: string; suffix: string } {
+  const match = value.match(/^([^\d]*)(\d+)(.*)$/);
+  if (!match) return { num: 0, prefix: "", suffix: value };
+  return { num: parseInt(match[2], 10), prefix: match[1], suffix: match[3] };
+}
+
+function AnimatedStat({ value, inView }: { value: string; inView: boolean }) {
+  const { num, prefix, suffix } = parseStatValue(value);
+  const animated = useCountUp(num, inView);
+  return <>{prefix}{animated}{suffix}</>;
+}
 
 export default function StatsStrip() {
   const ref = useRef(null);
@@ -27,7 +62,7 @@ export default function StatsStrip() {
               className="text-center"
             >
               <div className="font-serif text-white text-3xl sm:text-4xl lg:text-5xl mb-1">
-                {stat.value}
+                <AnimatedStat value={stat.value} inView={inView} />
               </div>
               <div className="text-white/60 text-sm font-medium tracking-wide uppercase">
                 {stat.label}
