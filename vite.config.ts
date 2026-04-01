@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 
 export default defineConfig({
+  base: "/grudzinska-landing-v2/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -11,7 +12,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3002,
+    port: 3004,
     host: true,
   },
 });
