@@ -99,7 +99,7 @@ export default function HeroSection() {
             <div className="relative overflow-hidden rounded-2xl lg:rounded-3xl shadow-2xl shadow-warm-brown/10">
               <motion.img
                 src={IMAGES.hero}
-                alt="Anna Grudzińska przygotowuje zdrowe posiłki w kuchni"
+                alt="Anna Krawczyk-Grudzińska przygotowuje zdrowe posiłki w kuchni"
                 className="w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] object-cover scale-110"
                 loading="eager"
                 style={{ y: imageY }}

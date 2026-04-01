@@ -32,13 +32,13 @@ export default function Navigation() {
           <a
             href="#"
             className="relative z-10 flex items-center gap-3 group"
-            aria-label="Anna Grudzińska — strona główna"
+            aria-label="Anna Krawczyk-Grudzińska — strona główna"
           >
             <span className="w-10 h-10 rounded-full bg-sage flex items-center justify-center text-white font-serif text-lg tracking-tight transition-transform duration-300 group-hover:scale-105">
               AG
             </span>
             <span className="hidden sm:block font-serif text-warm-brown text-lg">
-              Anna Grudzińska
+              Anna Krawczyk-Grudzińska
             </span>
           </a>
 

@@ -30,7 +30,7 @@ export default function Footer() {
               AG
             </div>
             <div>
-              <div className="font-serif text-white text-lg">Anna Grudzińska</div>
+              <div className="font-serif text-white text-lg">Anna Krawczyk-Grudzińska</div>
               <div className="text-white/50 text-sm">Dietetyk bariatryczny</div>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-6 text-center">
           <p className="text-xs text-white/35">
-            &copy; {new Date().getFullYear()} Anna Grudzińska. Wszelkie prawa
+            &copy; {new Date().getFullYear()} Anna Krawczyk-Grudzińska. Wszelkie prawa
             zastrzeżone.
           </p>
         </div>

@@ -25,7 +25,7 @@ export default function AboutSection() {
               <div className="absolute inset-0 bg-terracotta/8 rounded-2xl -rotate-2 scale-[1.02]" />
               <img
                 src={IMAGES.about}
-                alt="Anna Grudzińska — dietetyk bariatryczny"
+                alt="Anna Krawczyk-Grudzińska — dietetyk bariatryczny"
                 className="relative rounded-2xl w-full aspect-[3/4] object-cover shadow-xl"
                 loading="lazy"
               />

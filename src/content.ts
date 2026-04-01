@@ -29,23 +29,23 @@ export const NAV_LINKS = [
 export const HERO = {
   badge: "Dietetyk bariatryczny \u2022 Legionowo",
   heading: "Przygotuje ci\u0119 do operacji bariatrycznej",
-  headingAccent: "z\u00a0pewn\u0105 r\u0119k\u0105",
+  headingAccent: "z\u00a0profesjonaln\u0105 pomoc\u0105",
   description:
-    "Jestem jedyn\u0105 wyspecjalizowan\u0105 dietetyczk\u0105 bariatryczn\u0105 w Polsce. Pomog\u0119 Ci przej\u015b\u0107 przez ca\u0142y proces \u2014 od decyzji, przez przygotowanie, a\u017c po pe\u0142n\u0105 rekonwalescencj\u0119.",
+    "Jestem jedn\u0105 z niewielu wyspecjalizowanych dietetyczek bariatrycznych w Polsce. Pomog\u0119 Ci przej\u015b\u0107 przez ca\u0142y proces \u2014 od decyzji, przez przygotowanie, a\u017c po pe\u0142n\u0105 rekonwalescencj\u0119.",
   cta: "Zarezerwuj darmow\u0105 konsultacj\u0119",
   phoneLabel: "608 571 739",
 };
 
 export const ABOUT = {
   label: "O mnie",
-  name: "Anna Grudzi\u0144ska",
+  name: "Anna Krawczyk-Grudzi\u0144ska",
   paragraphs: [
     "Specjalizuj\u0119 si\u0119 w przygotowaniu pacjent\u00f3w do operacji bariatrycznej \u2014 czyli os\u00f3b z oty\u0142o\u015bci\u0105, kt\u00f3re zdecydowa\u0142y si\u0119 na chirurgiczne zmniejszenie \u017co\u0142\u0105dka jako metod\u0119 redukcji masy cia\u0142a.",
     "W Polsce aktualnie nie ma wyspecjalizowanego dietetyka bariatrycznego. Wype\u0142niam t\u0119 luk\u0119, oferuj\u0105c kompleksowe wsparcie psychodietetyczne na ka\u017cdym etapie Twojej drogi.",
     "Wiem, \u017ce to nie jest \u0142atwa decyzja. Dlatego zaczynam od darmowej konsultacji \u2014 \u017ceby\u015b mog\u0142a spokojnie porozmawia\u0107, zada\u0107 pytania i dowiedzie\u0107 si\u0119, jak mog\u0119 Ci pom\u00f3c.",
   ],
   badges: [
-    { icon: "award", title: "Specjalizacja bariatryczna", subtitle: "Jedyna w Polsce z kompleksowym podej\u015bciem psychodietetycznym" },
+    { icon: "award", title: "Specjalizacja bariatryczna", subtitle: "Jedna z niewielu w Polsce z kompleksowym podej\u015bciem psychodietetycznym" },
     { icon: "heartPulse", title: "150+ pacjentek", subtitle: "Przed operacj\u0105, po operacji, na ka\u017cdym etapie" },
     { icon: "brain", title: "Psychodietetyka", subtitle: "Bo oty\u0142o\u015b\u0107 to nie kwestia silnej woli" },
     { icon: "video", title: "Konsultacje online", subtitle: "Pacjentki z ca\u0142ej Polski i zagranicy" },
@@ -74,7 +74,7 @@ export const FOR_WHOM = {
       number: "03",
       title: "Operacja za chwil\u0119",
       description:
-        "Dieta w\u0105trobowa 1000 kcal, suplementacja, nauka powolnego jedzenia \u2014 kluczowe umiej\u0119tno\u015bci do opanowania.",
+        "Dieta 1000 kcal przygotowuj\u0105ca do operacji, suplementacja, nauka powolnego jedzenia \u2014 kluczowe umiej\u0119tno\u015bci do opanowania.",
     },
     {
       number: "04",
@@ -107,7 +107,7 @@ export const WHY = {
     "Wsparcie psychodietetyczne na ka\u017cdym etapie",
   ],
   quote:
-    "Problem jest w g\u0142owie, nie w \u017co\u0142\u0105dku. To uzale\u017cnienie od dopaminy \u2014 podobne do alkoholizmu. Bez zmiany mindset operacja mo\u017ce pogorszy\u0107 sytuacj\u0119.",
+    "Problem jest w g\u0142owie, nie w \u017co\u0142\u0105dku. To uzale\u017cnienie od dopaminy \u2014 podobne do alkoholizmu. Bez zmiany sposobu my\u015blenia operacja mo\u017ce pogorszy\u0107 sytuacj\u0119.",
 };
 
 export const HOW = {
@@ -221,7 +221,7 @@ export const FAQ = {
     },
     {
       question: "Czym r\u00f3\u017cnisz si\u0119 od \u201ezwyk\u0142ego\u201d dietetyka?",
-      answer: "Specjalizuj\u0119 si\u0119 w \u017cywieniu bariatrycznym. To nie jest kwestia napisania jad\u0142ospisu na 1200 kcal. Pracuj\u0119 z mechanizmami jedzenia emocjonalnego, z uzale\u017cnieniem od dopaminy, z konkretnymi wymaganiami dietetycznymi przed i po zabiegu. Jestem jedyn\u0105 specjalistk\u0105 w Polsce, kt\u00f3ra \u0142\u0105czy te wszystkie obszary.",
+      answer: "Specjalizuj\u0119 si\u0119 w \u017cywieniu bariatrycznym. To nie jest kwestia napisania jad\u0142ospisu na 1200 kcal. Pracuj\u0119 z mechanizmami jedzenia emocjonalnego, z uzale\u017cnieniem od dopaminy, z konkretnymi wymaganiami dietetycznymi przed i po zabiegu. Jestem jedn\u0105 z niewielu specjalistek w Polsce, kt\u00f3re \u0142\u0105cz\u0105 te wszystkie obszary.",
     },
     {
       question: "Nie mieszkam w Twoim mie\u015bcie. Czy to problem?",
