@@ -100,7 +100,7 @@ export default function HeroSection() {
               <motion.img
                 src={IMAGES.hero}
                 alt="Anna Krawczyk-Grudzińska przygotowuje zdrowe posiłki w kuchni"
-                className="w-full aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] object-cover scale-110"
+                className="w-full aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] object-cover object-top"
                 loading="eager"
                 style={{ y: imageY }}
               />
