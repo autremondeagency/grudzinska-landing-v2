@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "DM Serif Display", serif;
+  --font-sans: "Source Sans 3", sans-serif;
+
+  --color-sage: #8B9E7C;
+  --color-sage-light: #d4dece;
+  --color-sage-dark: #5f7050;
+  --color-terracotta: #C4704B;
+  --color-terracotta-light: #e8c4b3;
+  --color-sand: #F0E8DA;
+  --color-cream: #FAF6F0;
+  --color-warm-brown: #4A3728;
+  --color-warm-brown-light: #DDD2C0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-warm-brown);
+  background-color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background-color: var(--color-sage);
+  color: white;
+}
+
+/* Accessibility: visible focus ring for keyboard nav */
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-sage);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
