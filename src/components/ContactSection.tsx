@@ -127,11 +127,11 @@ export default function ContactSection() {
               </div>
 
               {/* Image */}
-              <div className="hidden sm:block">
+              <div>
                 <img
-                  src={IMAGES.online}
-                  alt="Anna Krawczyk-Grudzińska — dietetyk bariatryczny"
-                  className="rounded-xl w-full aspect-[3/2] object-cover object-top"
+                  src={IMAGES.hero}
+                  alt="Anna Krawczyk-Grudzińska przygotowuje zdrowe posiłki"
+                  className="rounded-xl w-full aspect-[3/2] object-cover object-center"
                   loading="lazy"
                 />
               </div>

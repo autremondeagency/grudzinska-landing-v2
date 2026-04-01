@@ -4,7 +4,6 @@ export const IMAGES = {
   hero: "/images/hero.webp",
   about: "/images/about.webp",
   consultation: "/images/consultation.webp",
-  online: "/images/online.webp",
 };
 
 export const CONTACT = {
