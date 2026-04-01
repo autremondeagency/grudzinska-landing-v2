@@ -39,7 +39,7 @@ export default function AboutSection() {
             </AnimatedSection>
 
             <div className="space-y-5">
-              {ABOUT.paragraphs.map((p, i) => (
+              {ABOUT.paragraphs.map((p: string, i: number) => (
                 <AnimatedSection key={i} variant="fadeUp" delay={0.1 * (i + 1)}>
                   <p className="text-warm-brown/75 leading-relaxed text-[1.05rem]">
                     {i === 2 ? (
@@ -60,7 +60,7 @@ export default function AboutSection() {
 
             <AnimatedSection variant="fadeUp" delay={0.4}>
               <div className="flex flex-wrap gap-3 mt-8">
-                {ABOUT.badges.map((badge, i) => {
+                {ABOUT.badges.map((badge: string, i: number) => {
                   const Icon = badgeIcons[i];
                   return (
                     <span

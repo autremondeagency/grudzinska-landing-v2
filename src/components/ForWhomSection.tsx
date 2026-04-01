@@ -39,9 +39,8 @@ export default function ForWhomSection() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {FOR_WHOM.cards.map((card, i) => {
+            {FOR_WHOM.cards.map((card: { number: string; title: string; description: string }, i: number) => {
               const isEven = i % 2 === 0;
-              const accent = isEven ? "sage" : "terracotta";
 
               return (
                 <motion.div

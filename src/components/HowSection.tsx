@@ -38,7 +38,7 @@ export default function HowSection() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {HOW.steps.map((step, i) => {
+            {HOW.steps.map((step: { number: number; title: string; description: string }, i: number) => {
               const Icon = stepIcons[i];
               return (
                 <motion.div

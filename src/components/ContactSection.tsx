@@ -232,7 +232,7 @@ export default function ContactSection() {
                         <option value="" disabled>
                           Wybierz...
                         </option>
-                        {CONTACT_SECTION.situationOptions.map((opt) => (
+                        {CONTACT_SECTION.situationOptions.map((opt: string) => (
                           <option key={opt} value={opt}>
                             {opt}
                           </option>

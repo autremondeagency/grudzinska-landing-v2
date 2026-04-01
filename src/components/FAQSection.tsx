@@ -25,7 +25,7 @@ export default function FAQSection() {
         {/* Accordion */}
         <AnimatedSection variant="fadeUp" delay={0.15}>
           <div className="space-y-3">
-            {FAQ.items.map((item, i) => {
+            {FAQ.items.map((item: { question: string; answer: string }, i: number) => {
               const isOpen = openIndex === i;
               return (
                 <div

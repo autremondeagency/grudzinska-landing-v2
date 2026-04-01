@@ -46,7 +46,7 @@ export default function WhySection() {
                   </h3>
                 </div>
                 <ul className="space-y-3.5">
-                  {WHY.without.map((item, i) => (
+                  {WHY.without.map((item: string, i: number) => (
                     <motion.li
                       key={i}
                       initial={{ opacity: 0, x: -16 }}
@@ -86,7 +86,7 @@ export default function WhySection() {
                   </h3>
                 </div>
                 <ul className="space-y-3.5">
-                  {WHY.with.map((item, i) => (
+                  {WHY.with.map((item: string, i: number) => (
                     <motion.li
                       key={i}
                       initial={{ opacity: 0, x: 16 }}

@@ -44,7 +44,7 @@ export default function Navigation() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map((link: { label: string; href: string }) => (
               <a
                 key={link.href}
                 href={link.href}

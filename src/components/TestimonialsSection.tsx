@@ -27,7 +27,7 @@ export default function TestimonialsSection() {
 
         {/* Cards */}
         <div ref={cardsRef} className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {TESTIMONIALS.reviews.map((review, i) => (
+          {TESTIMONIALS.reviews.map((review: { name: string; stage: string; text: string; metric: string }, i: number) => (
             <motion.div
               key={review.name}
               initial={{ opacity: 0, y: 36 }}
