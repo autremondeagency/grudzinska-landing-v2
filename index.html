@@ -9,14 +9,90 @@
     <meta property="og:description" content="Jedyna wyspecjalizowana dietetyczka bariatryczna w Polsce. Darmowa konsultacja." />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Anna Grudzińska — Dietetyk Bariatryczny",
+      "description": "Jedyna wyspecjalizowana dietetyczka bariatryczna w Polsce. Przygotowanie do operacji bariatrycznej, dieta przed i po zabiegu.",
+      "telephone": "+48608571739",
+      "email": "dietetyk.grudzinska@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Legionowo",
+        "addressCountry": "PL"
+      },
+      "priceRange": "$$",
+      "areaServed": "PL"
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy pierwsza konsultacja jest naprawdę darmowa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak, pierwsza konsultacja jest całkowicie bezpłatna i niezobowiązująca. Trwa około 20-30 minut — porozmawiamy o Twojej sytuacji, odpowiem na pytania i wytłumaczę, jak mogę Ci pomóc."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile kosztuje przygotowanie do operacji bariatrycznej?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cena zależy od długości współpracy i Twojego etapu. Dokładny koszt ustalimy po darmowej konsultacji, kiedy poznamy Twoją sytuację. Oferuję też wygodne pakiety rozłożone w czasie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy konsultacje mogą odbywać się online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oczywiście! Większość moich pacjentek korzysta z konsultacji online przez wideorozmowę. To wygodne, oszczędza czas i jest równie skuteczne jak spotkanie stacjonarne."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile trwa przygotowanie do operacji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zazwyczaj 2-6 miesięcy, w zależności od tego, ile masy ciała trzeba zredukować przed zabiegiem i jak szybko organizm reaguje na zmianę diety. Każdy plan jest indywidualny."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy pomagasz też po operacji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak — i to jest kluczowe! Po operacji żołądek ma wielkość jajka, trzeba nauczyć się jeść od nowa. Prowadzę pacjentki przez całą rekonwalescencję: dietę płynną, półpłynną, aż po normalną z suplementacją."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Nie mam jeszcze terminu operacji — czy mogę się zgłosić?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jak najbardziej! Wiele moich pacjentek przychodzi na etapie rozważania operacji. Pomogę Ci zrozumieć, z czym się wiąże, i świadomie podjąć decyzję."
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <!-- Netlify Forms: hidden form for SPA bot detection -->
-    <form name="kontakt" netlify netlify-honeypot="bot-field" hidden>
-      <input name="bot-field" />
+    <form name="kontakt" data-netlify="true" hidden>
       <input name="name" />
       <input name="phone" />
       <input name="email" />

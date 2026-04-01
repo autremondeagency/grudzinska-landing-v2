@@ -1,32 +1,62 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, Mail, MapPin, Video, ArrowRight, Check } from "lucide-react";
+import { Phone, Mail, MapPin, Video, ArrowRight, Check, AlertCircle } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { CONTACT, CONTACT_SECTION, IMAGES } from "@/content";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  const validate = (name: string, value: string) => {
+    if (name === "name" && !value.trim()) return "Imię jest wymagane";
+    if (name === "phone") {
+      if (!value.trim()) return "Numer telefonu jest wymagany";
+      if (!/^[+\d\s()-]{7,}$/.test(value.trim())) return "Podaj poprawny numer telefonu";
+    }
+    if (name === "email" && value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+      return "Podaj poprawny adres email";
+    return "";
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((t) => ({ ...t, [name]: true }));
+    const err = validate(name, value);
+    setErrors((prev) => ({ ...prev, [name]: err }));
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value;
+    const nameVal = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const phoneVal = (form.elements.namedItem("phone") as HTMLInputElement).value;
+    const emailVal = (form.elements.namedItem("email") as HTMLInputElement).value;
 
-    if (!name.trim() || !phone.trim()) return;
+    const newErrors: Record<string, string> = {
+      name: validate("name", nameVal),
+      phone: validate("phone", phoneVal),
+      email: validate("email", emailVal),
+    };
+    setErrors(newErrors);
+    setTouched({ name: true, phone: true, email: true });
+
+    if (Object.values(newErrors).some((e) => e)) return;
 
     setSubmitting(true);
     try {
       const formData = new FormData(form);
+      const params = new URLSearchParams();
+      formData.forEach((value, key) => params.append(key, value.toString()));
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+        body: params.toString(),
       });
       setSubmitted(true);
     } catch {
-      // Fallback — still show success (Netlify will retry)
       setSubmitted(true);
     } finally {
       setSubmitting(false);
@@ -178,9 +208,15 @@ export default function ContactSection() {
                         name="name"
                         type="text"
                         required
-                        className={inputClass}
+                        className={`${inputClass} ${touched.name && errors.name ? "border-terracotta/60 focus:ring-terracotta/30" : ""}`}
                         placeholder="Anna Kowalska"
+                        onBlur={handleBlur}
                       />
+                      {touched.name && errors.name && (
+                        <p className="mt-1 text-xs text-terracotta flex items-center gap-1">
+                          <AlertCircle size={12} /> {errors.name}
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -195,9 +231,15 @@ export default function ContactSection() {
                         name="phone"
                         type="tel"
                         required
-                        className={inputClass}
+                        className={`${inputClass} ${touched.phone && errors.phone ? "border-terracotta/60 focus:ring-terracotta/30" : ""}`}
                         placeholder="+48 600 000 000"
+                        onBlur={handleBlur}
                       />
+                      {touched.phone && errors.phone && (
+                        <p className="mt-1 text-xs text-terracotta flex items-center gap-1">
+                          <AlertCircle size={12} /> {errors.phone}
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -211,9 +253,15 @@ export default function ContactSection() {
                         id="email"
                         name="email"
                         type="email"
-                        className={inputClass}
+                        className={`${inputClass} ${touched.email && errors.email ? "border-terracotta/60 focus:ring-terracotta/30" : ""}`}
                         placeholder="anna@email.com"
+                        onBlur={handleBlur}
                       />
+                      {touched.email && errors.email && (
+                        <p className="mt-1 text-xs text-terracotta flex items-center gap-1">
+                          <AlertCircle size={12} /> {errors.email}
+                        </p>
+                      )}
                     </div>
 
                     <div>
