@@ -1,9 +1,11 @@
 // All Polish copy, image URLs, and contact info in one place
 
+const base = import.meta.env.BASE_URL;
+
 export const IMAGES = {
-  hero: "/images/hero.webp",
-  about: "/images/about.webp",
-  consultation: "/images/consultation.webp",
+  hero: `${base}images/hero.webp`,
+  about: `${base}images/about.webp`,
+  consultation: `${base}images/consultation.webp`,
 };
 
 export const CONTACT = {
