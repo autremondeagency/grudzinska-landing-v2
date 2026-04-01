@@ -28,7 +28,7 @@ export const NAV_LINKS = [
 
 export const HERO = {
   badge: "Dietetyk bariatryczny \u2022 Legionowo",
-  heading: "Przygotuje ci\u0119 do operacji bariatrycznej",
+  heading: "Przygotuj\u0119 ci\u0119 do operacji bariatrycznej",
   headingAccent: "z\u00a0profesjonaln\u0105 pomoc\u0105",
   description:
     "Jestem jedn\u0105 z niewielu wyspecjalizowanych dietetyczek bariatrycznych w Polsce. Pomog\u0119 Ci przej\u015b\u0107 przez ca\u0142y proces \u2014 od decyzji, przez przygotowanie, a\u017c po pe\u0142n\u0105 rekonwalescencj\u0119.",
@@ -41,7 +41,7 @@ export const ABOUT = {
   name: "Anna Krawczyk-Grudzi\u0144ska",
   paragraphs: [
     "Specjalizuj\u0119 si\u0119 w przygotowaniu pacjent\u00f3w do operacji bariatrycznej \u2014 czyli os\u00f3b z oty\u0142o\u015bci\u0105, kt\u00f3re zdecydowa\u0142y si\u0119 na chirurgiczne zmniejszenie \u017co\u0142\u0105dka jako metod\u0119 redukcji masy cia\u0142a.",
-    "W Polsce aktualnie nie ma wyspecjalizowanego dietetyka bariatrycznego. Wype\u0142niam t\u0119 luk\u0119, oferuj\u0105c kompleksowe wsparcie psychodietetyczne na ka\u017cdym etapie Twojej drogi.",
+    "W Polsce aktualnie nie ma wielu wyspecjalizowanych dietetyk\u00f3w bariatrycznych. Wype\u0142niam t\u0119 luk\u0119, oferuj\u0105c kompleksowe wsparcie psychodietetyczne na ka\u017cdym etapie Twojej drogi.",
     "Wiem, \u017ce to nie jest \u0142atwa decyzja. Dlatego zaczynam od darmowej konsultacji \u2014 \u017ceby\u015b mog\u0142a spokojnie porozmawia\u0107, zada\u0107 pytania i dowiedzie\u0107 si\u0119, jak mog\u0119 Ci pom\u00f3c.",
   ],
   badges: [
