@@ -1,11 +1,10 @@
-import { Award, HeartPulse, Brain, Video } from "lucide-react";
+import { Award, HeartPulse, Video } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { ABOUT, IMAGES } from "@/content";
 
 const badgeIconMap: Record<string, typeof Award> = {
   award: Award,
   heartPulse: HeartPulse,
-  brain: Brain,
   video: Video,
 };
 
@@ -65,7 +64,7 @@ export default function AboutSection() {
 
             {/* Trust badges */}
             <AnimatedSection variant="fadeUp" delay={0.4}>
-              <div className="grid grid-cols-2 gap-3 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
                 {ABOUT.badges.map((badge) => {
                   const Icon = badgeIconMap[badge.icon] || Award;
                   return (

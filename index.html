@@ -8,6 +8,7 @@
     <meta property="og:title" content="Anna Krawczyk-Grudzińska — Dietetyk Bariatryczny" />
     <meta property="og:description" content="Jedna z niewielu wyspecjalizowanych dietetyczek bariatrycznych w Polsce. Darmowa konsultacja." />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Structured Data: LocalBusiness -->
@@ -56,7 +57,7 @@
           "name": "Czy konsultacje dietetyczne mogą być online?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak, większość moich pacjentek pracuje ze mną zdalnie. Spotykamy się na wideokonsultacji — potrzebujesz tylko telefonu lub komputera. Działa to tak samo dobrze jak spotkanie na żywo."
+            "text": "Tak, większość moich pacjentek pracuje ze mną zdalnie. Spotykamy się na wideokonsultacji — potrzebujesz tylko telefonu lub komputera."
           }
         },
         {
@@ -64,49 +65,42 @@
           "name": "Czy pomagasz też po operacji bariatrycznej?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak, i uważam, że to kluczowy etap. Pierwsze miesiące po zabiegu to dieta płynna, papkowata, potem stopniowe rozszerzanie. Wspieram Cię dietetycznie i psychologicznie."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Czy muszę być już po decyzji o operacji bariatrycznej?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nie. Dużo moich pacjentek przychodzi na etapie rozważania. Pomagam uporządkować informacje, rozważyć opcje i podjąć świadomą decyzję."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Czym różni się dietetyk bariatryczny od zwykłego dietetyka?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Specjalizuję się w żywieniu bariatrycznym. Pracuję z mechanizmami jedzenia emocjonalnego, z uzależnieniem od dopaminy, z konkretnymi wymaganiami dietetycznymi przed i po zabiegu. Jestem jedną z niewielu specjalistek w Polsce łączących te obszary."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Nie mieszkam w Legionowie. Czy to problem?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "W ogóle nie. Pracuję z pacjentkami z całej Polski i nie tylko. Wszystko odbywa się online — konsultacje, jadłospisy, wsparcie między spotkaniami."
+            "text": "Tak, i uważam, że to kluczowy etap. Pierwsze miesiące po zabiegu to dieta płynna, papkowata, potem stopniowe rozszerzanie. Wspieram Cię dietetycznie."
           }
         }
       ]
     }
     </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      // Pixel ID is injected at build/runtime via VITE_META_PIXEL_ID env var
+      // Replace 'PIXEL_ID_PLACEHOLDER' with actual ID after creating Pixel in Meta Events Manager
+      window.__META_PIXEL_ID__ = 'PIXEL_ID_PLACEHOLDER';
+      if (window.__META_PIXEL_ID__ && window.__META_PIXEL_ID__ !== 'PIXEL_ID_PLACEHOLDER') {
+        fbq('init', window.__META_PIXEL_ID__);
+        fbq('track', 'PageView');
+      }
+    </script>
+    <!-- End Meta Pixel Code -->
   </head>
   <body>
-    <!-- Netlify Forms: hidden form for SPA bot detection -->
-    <form name="kontakt" data-netlify="true" hidden>
-      <input name="name" />
-      <input name="phone" />
-      <input name="email" />
-      <input name="situation" />
-      <textarea name="message"></textarea>
-    </form>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=PIXEL_ID_PLACEHOLDER&ev=PageView&noscript=1" alt="" />
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

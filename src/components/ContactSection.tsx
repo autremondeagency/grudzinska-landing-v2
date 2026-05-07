@@ -4,6 +4,12 @@ import { Phone, Mail, MapPin, Video, ArrowRight, Check, AlertCircle } from "luci
 import AnimatedSection from "./AnimatedSection";
 import { CONTACT, CONTACT_SECTION, IMAGES } from "@/content";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -18,6 +24,7 @@ export default function ContactSection() {
     }
     if (name === "email" && value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
       return "Podaj poprawny adres email";
+    if (name === "consent" && value !== "true") return "Wymagana jest zgoda na kontakt";
     return "";
   };
 
@@ -31,32 +38,49 @@ export default function ContactSection() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const nameVal = (form.elements.namedItem("name") as HTMLInputElement).value;
-    const phoneVal = (form.elements.namedItem("phone") as HTMLInputElement).value;
-    const emailVal = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const formData = new FormData(form);
+    const consent = (form.elements.namedItem("consent") as HTMLInputElement).checked;
+
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      situation: String(formData.get("situation") || ""),
+      message: String(formData.get("message") || "").trim(),
+      consent,
+      source: "landing",
+    };
 
     const newErrors: Record<string, string> = {
-      name: validate("name", nameVal),
-      phone: validate("phone", phoneVal),
-      email: validate("email", emailVal),
+      name: validate("name", payload.name),
+      phone: validate("phone", payload.phone),
+      email: validate("email", payload.email),
+      consent: validate("consent", consent ? "true" : "false"),
     };
     setErrors(newErrors);
-    setTouched({ name: true, phone: true, email: true });
+    setTouched({ name: true, phone: true, email: true, consent: true });
 
     if (Object.values(newErrors).some((e) => e)) return;
 
     setSubmitting(true);
     try {
-      const formData = new FormData(form);
-      const params = new URLSearchParams();
-      formData.forEach((value, key) => params.append(key, value.toString()));
-      await fetch("/", {
+      const res = await fetch("/api/lead", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
+      // Even if backend hiccups, show success — leady mogą iść też mailem
+      if (!res.ok && res.status >= 500) {
+        console.warn("Lead API responded with", res.status);
+      }
+      // Fire Meta Pixel Lead event
+      if (typeof window !== "undefined" && typeof window.fbq === "function") {
+        window.fbq("track", "Lead");
+      }
       setSubmitted(true);
-    } catch {
+    } catch (err) {
+      console.error("Lead submit failed:", err);
+      // still show success — pacjentka nie powinna obrywać UX
       setSubmitted(true);
     } finally {
       setSubmitting(false);
@@ -88,7 +112,6 @@ export default function ContactSection() {
           {/* Left — Contact info + images */}
           <AnimatedSection variant="slideLeft" delay={0.1}>
             <div className="space-y-6">
-              {/* Contact cards */}
               <div className="grid grid-cols-2 gap-3">
                 <a
                   href={CONTACT.phoneRaw}
@@ -126,7 +149,6 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              {/* Image */}
               <div>
                 <img
                   src={IMAGES.hero}
@@ -181,15 +203,11 @@ export default function ContactSection() {
                 ) : (
                   <motion.form
                     key="form"
-                    name="kontakt"
-                    method="POST"
-                    data-netlify="true"
                     onSubmit={handleSubmit}
                     className="space-y-4"
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <input type="hidden" name="form-name" value="kontakt" />
                     <div>
                       <label
                         htmlFor="name"
@@ -202,6 +220,7 @@ export default function ContactSection() {
                         name="name"
                         type="text"
                         required
+                        autoComplete="name"
                         className={`${inputClass} ${touched.name && errors.name ? "border-terracotta/60 focus:ring-terracotta/30" : ""}`}
                         placeholder="Anna Kowalska"
                         onBlur={handleBlur}
@@ -225,6 +244,7 @@ export default function ContactSection() {
                         name="phone"
                         type="tel"
                         required
+                        autoComplete="tel"
                         className={`${inputClass} ${touched.phone && errors.phone ? "border-terracotta/60 focus:ring-terracotta/30" : ""}`}
                         placeholder="+48 600 000 000"
                         onBlur={handleBlur}
@@ -247,6 +267,7 @@ export default function ContactSection() {
                         id="email"
                         name="email"
                         type="email"
+                        autoComplete="email"
                         className={`${inputClass} ${touched.email && errors.email ? "border-terracotta/60 focus:ring-terracotta/30" : ""}`}
                         placeholder="anna@email.com"
                         onBlur={handleBlur}
@@ -298,6 +319,34 @@ export default function ContactSection() {
                       />
                     </div>
 
+                    <div className="pt-1">
+                      <label className="flex items-start gap-2.5 text-xs text-warm-brown/65 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="consent"
+                          required
+                          className="mt-0.5 w-4 h-4 accent-sage flex-shrink-0"
+                        />
+                        <span>
+                          {CONTACT_SECTION.consentLabel}{" "}
+                          <a
+                            href={CONTACT_SECTION.privacyLinkHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sage-dark underline hover:text-terracotta"
+                          >
+                            {CONTACT_SECTION.privacyLinkLabel}
+                          </a>
+                          .
+                        </span>
+                      </label>
+                      {touched.consent && errors.consent && (
+                        <p className="mt-1.5 text-xs text-terracotta flex items-center gap-1">
+                          <AlertCircle size={12} /> {errors.consent}
+                        </p>
+                      )}
+                    </div>
+
                     <button
                       type="submit"
                       disabled={submitting}
@@ -317,7 +366,16 @@ export default function ContactSection() {
                     </button>
 
                     <p className="text-xs text-warm-brown/40 text-center pt-1">
-                      {CONTACT_SECTION.privacyNote}
+                      {CONTACT_SECTION.privacyNote}{" "}
+                      <a
+                        href={CONTACT_SECTION.privacyLinkHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-warm-brown/70"
+                      >
+                        {CONTACT_SECTION.privacyLinkLabel}
+                      </a>
+                      .
                     </p>
                   </motion.form>
                 )}
