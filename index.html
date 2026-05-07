@@ -76,7 +76,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel base library (init happens in main.tsx using VITE_META_PIXEL_ID env) -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -86,15 +86,7 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      // Pixel ID is injected at build/runtime via VITE_META_PIXEL_ID env var
-      // Replace 'PIXEL_ID_PLACEHOLDER' with actual ID after creating Pixel in Meta Events Manager
-      window.__META_PIXEL_ID__ = 'PIXEL_ID_PLACEHOLDER';
-      if (window.__META_PIXEL_ID__ && window.__META_PIXEL_ID__ !== 'PIXEL_ID_PLACEHOLDER') {
-        fbq('init', window.__META_PIXEL_ID__);
-        fbq('track', 'PageView');
-      }
     </script>
-    <!-- End Meta Pixel Code -->
   </head>
   <body>
     <noscript>

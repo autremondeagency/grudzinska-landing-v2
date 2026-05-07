@@ -5,6 +5,16 @@ import "./index.css";
 import App from "./App.tsx";
 import Panel from "./pages/Panel.tsx";
 
+// Initialize Meta Pixel from build-time env var (set VITE_META_PIXEL_ID in Vercel)
+const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
+if (PIXEL_ID && typeof window !== "undefined") {
+  const w = window as Window & { fbq?: (...args: unknown[]) => void };
+  if (typeof w.fbq === "function") {
+    w.fbq("init", PIXEL_ID);
+    w.fbq("track", "PageView");
+  }
+}
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
