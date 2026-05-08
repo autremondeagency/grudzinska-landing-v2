@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { X, Check } from "lucide-react";
+import { X, Check, ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { WHY } from "@/content";
 
@@ -123,6 +123,23 @@ export default function WhySection() {
               {WHY.quote}
             </p>
           </blockquote>
+        </AnimatedSection>
+
+        {/* Inline CTA */}
+        <AnimatedSection variant="fadeUp" delay={0.3} className="text-center mt-10">
+          <a
+            href="#kontakt"
+            className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-sage text-white font-semibold rounded-full text-base hover:bg-sage-dark transition-all duration-300 hover:shadow-xl hover:shadow-sage/25 hover:-translate-y-0.5"
+          >
+            Porozmawiajmy o Twojej sytuacji
+            <ArrowRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+          <p className="text-xs text-warm-brown/45 mt-3">
+            Pierwsza rozmowa darmowa — bez zobowiązań
+          </p>
         </AnimatedSection>
       </div>
     </section>

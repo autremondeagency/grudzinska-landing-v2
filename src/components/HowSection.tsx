@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, Heart, Shield } from "lucide-react";
+import { Phone, Heart, Shield, ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { HOW } from "@/content";
 
@@ -37,7 +37,7 @@ export default function HowSection() {
             />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12 mb-12">
             {HOW.steps.map((step: { number: number; title: string; description: string }, i: number) => {
               const Icon = stepIcons[i];
               return (
@@ -75,6 +75,25 @@ export default function HowSection() {
               );
             })}
           </div>
+
+          {/* Inline CTA */}
+          <AnimatedSection variant="fadeUp" delay={0.5}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <a
+                href="#kontakt"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-sage text-white font-semibold rounded-full text-base hover:bg-sage-dark transition-all duration-300 hover:shadow-xl hover:shadow-sage/25 hover:-translate-y-0.5"
+              >
+                Zarezerwuj darmową konsultację
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </a>
+              <span className="text-sm text-warm-brown/55">
+                Bez zobowiązań · 15-20 min
+              </span>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

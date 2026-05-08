@@ -1,4 +1,4 @@
-import { Award, HeartPulse, Video } from "lucide-react";
+import { Award, HeartPulse, Video, ArrowRight } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { ABOUT, IMAGES } from "@/content";
 
@@ -64,7 +64,7 @@ export default function AboutSection() {
 
             {/* Trust badges */}
             <AnimatedSection variant="fadeUp" delay={0.4}>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-8 mb-7">
                 {ABOUT.badges.map((badge) => {
                   const Icon = badgeIconMap[badge.icon] || Award;
                   return (
@@ -87,6 +87,20 @@ export default function AboutSection() {
                   );
                 })}
               </div>
+            </AnimatedSection>
+
+            {/* Inline CTA */}
+            <AnimatedSection variant="fadeUp" delay={0.55}>
+              <a
+                href="#kontakt"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-sage text-white font-semibold rounded-full text-sm hover:bg-sage-dark transition-all duration-300 hover:shadow-lg hover:shadow-sage/25 hover:-translate-y-0.5"
+              >
+                Umów darmową konsultację
+                <ArrowRight
+                  size={15}
+                  className="transition-transform duration-300 group-hover:translate-x-0.5"
+                />
+              </a>
             </AnimatedSection>
           </div>
         </div>

@@ -9,7 +9,7 @@ import GalleryStrip from "@/components/GalleryStrip";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import MobileCTA from "@/components/MobileCTA";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
         <ContactSection />
       </main>
       <Footer />
-      <MobileCTA />
+      <FloatingCTA />
     </>
   );
 }
