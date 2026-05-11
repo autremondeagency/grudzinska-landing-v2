@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 import Panel from "./pages/Panel.tsx";
+import { initPixelTracking } from "./lib/pixel-tracking";
 
 // Initialize Meta Pixel from build-time env var (set VITE_META_PIXEL_ID in Vercel)
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
@@ -13,6 +14,8 @@ if (PIXEL_ID && typeof window !== "undefined") {
     w.fbq("init", PIXEL_ID);
     w.fbq("track", "PageView");
   }
+  // Engagement tracking: ViewContent (50%), ScrollDepth75, PhoneClick, EmailClick, CTAClick
+  initPixelTracking();
 }
 
 createRoot(document.getElementById("root")!).render(
