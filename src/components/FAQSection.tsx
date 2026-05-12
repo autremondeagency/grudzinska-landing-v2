@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { FAQ } from "@/content";
+import { trackFAQOpen } from "@/lib/pixel-tracking";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -42,7 +43,11 @@ export default function FAQSection() {
                   }`}
                 >
                   <button
-                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    onClick={() => {
+                      const opening = !isOpen;
+                      setOpenIndex(opening ? i : null);
+                      if (opening) trackFAQOpen(item.question);
+                    }}
                     className="w-full flex items-center justify-between gap-4 p-5 text-left"
                     aria-expanded={isOpen}
                   >

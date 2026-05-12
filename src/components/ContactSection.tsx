@@ -3,11 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, MapPin, Video, ArrowRight, Check, AlertCircle } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { CONTACT, CONTACT_SECTION, IMAGES } from "@/content";
+import { setUserData } from "@/lib/pixel-tracking";
 
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
   }
+}
+
+// Generate UUID v4 (works in all modern browsers, no external dep)
+function generateEventId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  // Fallback for older browsers
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
 }
 
 export default function ContactSection() {
@@ -41,6 +55,9 @@ export default function ContactSection() {
     const formData = new FormData(form);
     const consent = (form.elements.namedItem("consent") as HTMLInputElement).checked;
 
+    // Event ID for Pixel ↔ CAPI deduplication (used by server-side CAPI later)
+    const eventId = generateEventId();
+
     const payload = {
       name: String(formData.get("name") || "").trim(),
       phone: String(formData.get("phone") || "").trim(),
@@ -49,6 +66,7 @@ export default function ContactSection() {
       message: String(formData.get("message") || "").trim(),
       consent,
       source: "landing",
+      event_id: eventId,
     };
 
     const newErrors: Record<string, string> = {
@@ -73,9 +91,27 @@ export default function ContactSection() {
       if (!res.ok && res.status >= 500) {
         console.warn("Lead API responded with", res.status);
       }
-      // Fire Meta Pixel Lead event
+      // Advanced Matching — re-init Pixel with user data so all future
+      // events (including Lead below) carry em/ph/fn for matching.
+      setUserData({
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+      });
+
+      // Fire Meta Pixel Lead + CompleteRegistration with eventID for
+      // server-side CAPI deduplication (server will fire same event_id).
       if (typeof window !== "undefined" && typeof window.fbq === "function") {
-        window.fbq("track", "Lead");
+        window.fbq("track", "Lead", {}, { eventID: eventId });
+        window.fbq(
+          "track",
+          "CompleteRegistration",
+          {
+            content_name: "bariatric_consultation_request",
+            status: true,
+          },
+          { eventID: eventId }
+        );
       }
       setSubmitted(true);
     } catch (err) {
