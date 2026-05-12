@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "./_lib/supabase";
 import { jsonResponse } from "./_lib/auth";
+import { sendCapiEvent, extractFbCookies } from "./_lib/capi";
 
 export const config = { runtime: "edge" };
 
@@ -11,6 +12,7 @@ interface LeadPayload {
   message?: string;
   consent?: boolean;
   source?: string;
+  event_id?: string;
 }
 
 export default async function handler(req: Request): Promise<Response> {
@@ -96,6 +98,55 @@ export default async function handler(req: Request): Promise<Response> {
     } catch (err) {
       console.error("[lead] Resend failed:", err);
     }
+  }
+
+  // Server-side Meta CAPI — dedup with Pixel via event_id (best-effort).
+  if (body.event_id) {
+    const { fbp, fbc } = extractFbCookies(req.headers.get("cookie"));
+    const eventSourceUrl =
+      req.headers.get("referer") ||
+      `https://${req.headers.get("host") || "bariatriadietetyk.blog"}/`;
+    const clientIp =
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
+      req.headers.get("x-real-ip") ||
+      undefined;
+    const clientUa = req.headers.get("user-agent") || undefined;
+
+    // Fire Lead + CompleteRegistration (matches what the Pixel sends client-side)
+    await Promise.allSettled([
+      sendCapiEvent({
+        eventName: "Lead",
+        eventId: body.event_id,
+        eventSourceUrl,
+        userData: {
+          email: lead.email,
+          phone: lead.phone,
+          name: lead.name,
+          clientIpAddress: clientIp,
+          clientUserAgent: clientUa,
+          fbp,
+          fbc,
+        },
+      }),
+      sendCapiEvent({
+        eventName: "CompleteRegistration",
+        eventId: body.event_id,
+        eventSourceUrl,
+        userData: {
+          email: lead.email,
+          phone: lead.phone,
+          name: lead.name,
+          clientIpAddress: clientIp,
+          clientUserAgent: clientUa,
+          fbp,
+          fbc,
+        },
+        customData: {
+          content_name: "bariatric_consultation_request",
+          status: true,
+        },
+      }),
+    ]);
   }
 
   return jsonResponse({ ok: true });
