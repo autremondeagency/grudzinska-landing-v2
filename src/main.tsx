@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./index.css";
 import App from "./App.tsx";
 import Panel from "./pages/Panel.tsx";
@@ -25,6 +27,8 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />} />
         <Route path="/panel" element={<Panel />} />
       </Routes>
+      <Analytics />
+      <SpeedInsights />
     </BrowserRouter>
   </StrictMode>
 );
