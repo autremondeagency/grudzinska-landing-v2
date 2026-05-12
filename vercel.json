@@ -4,7 +4,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/((?!api/|panel|privacy|favicon|images|assets|.*\\..*).*)",
+      "source": "/((?!api/|privacy|favicon|images|assets|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],
