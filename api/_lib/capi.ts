@@ -114,11 +114,11 @@ export async function sendCapiEvent(input: CapiEventInput): Promise<boolean> {
         body: JSON.stringify(body),
       }
     );
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error("[capi] HTTP", res.status, errText);
-      return false;
-    }
+    const responseText = await res.text();
+    console.log(
+      `[capi] ${input.eventName} → Meta ${res.status} | event_id=${input.eventId} | body=${responseText}`
+    );
+    if (!res.ok) return false;
     return true;
   } catch (err) {
     console.error("[capi] fetch failed:", err);
