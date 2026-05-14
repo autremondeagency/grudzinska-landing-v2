@@ -15,7 +15,7 @@ export default function HeroSection() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-cream"
+      className="relative min-h-[88vh] lg:min-h-screen flex items-center overflow-hidden bg-cream"
     >
       {/* Organic background shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -27,10 +27,10 @@ export default function HeroSection() {
         }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-24 pb-16 lg:pt-0 lg:pb-0 w-full">
-        <div className="grid lg:grid-cols-[1fr_0.9fr] gap-12 lg:gap-16 items-center">
-          {/* Left — Copy */}
-          <div className="order-2 lg:order-1">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 pt-20 pb-10 lg:pt-0 lg:pb-0 w-full">
+        <div className="grid lg:grid-cols-[1fr_0.9fr] gap-6 lg:gap-16 items-center">
+          {/* Left — Copy (always first on mobile so CTA appears above the fold) */}
+          <div className="order-1 lg:order-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="order-1 lg:order-2 relative"
+            className="order-2 lg:order-2 relative"
           >
             {/* Decorative blob behind image */}
             <div className="absolute -inset-4 lg:-inset-6 bg-sage/[0.08] rounded-[2rem] lg:rounded-[3rem] -rotate-2 transition-transform duration-500" />
@@ -100,7 +100,7 @@ export default function HeroSection() {
               <motion.img
                 src={IMAGES.hero}
                 alt="Anna Krawczyk-Grudzińska przygotowuje zdrowe posiłki w kuchni"
-                className="w-full aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] object-cover object-top"
+                className="w-full aspect-[4/3] sm:aspect-[4/5] lg:aspect-[4/5] object-cover object-top"
                 loading="eager"
                 style={{ y: imageY }}
               />

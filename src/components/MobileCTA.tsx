@@ -9,7 +9,7 @@ export default function MobileCTA() {
 
   useEffect(() => {
     const onScroll = () => {
-      setVisible(window.scrollY > 400);
+      setVisible(window.scrollY > 150);
       const footer = document.querySelector("footer");
       if (footer) {
         const rect = footer.getBoundingClientRect();
